@@ -1,0 +1,395 @@
+/* Mobile Responsive Styles for PaylasimliHesap.com */
+
+/* General Responsive Adjustments */
+@media screen and (max-width: 992px) {
+    /* Adjust container width */
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Adjust feature cards layout */
+    .features .container, .stats .container {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    
+    .feature-card, .stat-card {
+        width: calc(50% - 15px);
+        margin: 0 auto;
+    }
+    
+    /* Adjust hero section for tablets */
+    .slide-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .slide-content p {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Mobile Header & Navigation */
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .nav-logo {
+        height: 35px;
+    }
+    
+    /* Hide regular nav links and show mobile menu button */
+    .nav-links:not(.auth-links) {
+        display: none;
+    }
+    
+    /* Add hamburger menu for mobile */
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+    
+    .mobile-menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #66c0f4;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Mobile menu container */
+    .mobile-menu {
+        position: fixed;
+        top: 110px; /* Below navbar and top bar */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 110px);
+        background: rgba(27, 40, 56, 0.97);
+        backdrop-filter: blur(10px);
+        z-index: 1050; /* Z-index artırıldı */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        padding: 20px;
+        overflow-y: auto;
+        display: block;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .mobile-menu.active {
+        transform: translateX(0);
+    }
+    
+    .mobile-menu-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .mobile-menu-links li {
+        margin-bottom: 15px;
+    }
+    
+    .mobile-menu-links a {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 12px 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-links a:hover {
+        background: rgba(102, 192, 244, 0.2);
+    }
+    
+    .mobile-menu-links a i {
+        margin-right: 10px;
+        color: #66c0f4;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* Mobile Hero Adjustments */
+    .hero {
+        height: 60vh;
+    }
+    
+    .slide-content {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .slide-content .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Swiper Navigation adjustment */
+    .swiper-button-next, .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .swiper-pagination {
+        bottom: 90px !important;
+    }
+    
+    /* Features section for mobile */
+    .features {
+        padding: 60px 0;
+    }
+    
+    .features .container, .stats .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card, .stat-card {
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 20px;
+    }
+    
+    /* Auth modal adjustments */
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+        margin: 15% auto;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Smaller mobile adjustments */
+    .top-navbar {
+        height: 35px;
+        line-height: 35px;
+        font-size: 12px;
+    }
+    
+    .navbar {
+        top: 35px;
+    }
+    
+    .mobile-menu {
+        top: 105px; /* Adjusted for smaller top navbar */
+        height: calc(100vh - 105px);
+    }
+    
+    /* Login/register button adjustments */
+    .login-content {
+        width: auto;
+        padding: 0 8px;
+    }
+    
+    .specailLogin {
+        font-size: 13px;
+    }
+    
+    .specailLogin small {
+        font-size: 10px;
+    }
+    
+    /* Hero section further adjustments */
+    .hero {
+        height: 50vh;
+    }
+    
+    .slide-content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* Feature icon adjustments */
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .feature-icon i {
+        font-size: 24px;
+    }
+    
+    /* Stats section adjustments */
+    .stats {
+        padding: 50px 0;
+    }
+    
+    .stat-card h3 {
+        font-size: 32px;
+    }
+    
+    .stat-card p {
+        font-size: 16px;
+    }
+    
+    /* Modal adjustments for very small screens */
+    .modal-content {
+        padding: 25px 15px;
+    }
+    
+    .modal-header h2 {
+        font-size: 24px;
+    }
+    
+    .field input {
+        padding: 12px 15px;
+    }
+    
+    .loginSubmitBtn, .ui.button.violet {
+        padding: 14px;
+    }
+    
+    /* Footer adjustments */
+    .footer-block h3 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .footer-links a, .footer-contact p, .footer-newsletter p {
+        font-size: 14px;
+    }
+    
+    /* Footer container for small screens */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Newsletter form adjustments */
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-input {
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Dropdown menu adjustments for mobile */
+@media screen and (max-width: 768px) {
+    .dropdown-menu {
+        min-width: 220px;
+        right: -10px;
+    }
+    
+    .dropdown-menu::before {
+        right: 15px;
+    }
+}
+
+/* Add these CSS for hamburger menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 25px !important;
+        height: 20px !important;
+        margin-right: 15px !important;
+        z-index: 1100 !important;
+    }
+    
+    .hamburger-menu span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    
+    .hamburger-menu.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    /* Adjust nav-right for hamburger */
+    .nav-right {
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Bullet points'leri gizle */
+.mobile-menu-links,
+.nav-links {
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Doğrudan sayfada gösterilen menü bağlantılarını gizleme */
+body > ul > li > a,
+body > ul > li,
+body > ul,
+body > li,
+body > a {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Top navbar'ın z-index'ini artır */
+.top-navbar {
+    z-index: 1100;
+}
+
+/* Ana navbar'ın z-index'ini artır */
+.navbar {
+    z-index: 1090;
+}
+
+/* Sayfanın en üst kısmındaki menü öğelerini tamamen gizle */
+body > ul {
+    display: none !important;
+}

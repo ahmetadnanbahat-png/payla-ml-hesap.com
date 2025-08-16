@@ -1,0 +1,62 @@
+/* SweetAlert Genel Stil */
+/* SweetAlert Popup Arka Plan Rengi */
+.swal2-popup {
+    background: #25273a;
+    color: #b1b2cb !important; /* Yazı rengini beyaz yap */
+    border-radius: 10px !important; /* Köşeleri yuvarla */
+	border: 1px solid #313348;
+    box-shadow: 0 0 70px #25273a;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Başlık Stil */
+.swal2-title {
+    color: #F3F3FF !important; /* Başlık rengi */
+    font-size: 24px !important;
+    text-align: center;
+}
+
+/* İçerik Stil */
+.swal2-content {
+    color: #b1b2cb !important; /* İçerik rengi */
+    font-size: 20px !important;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Onay Butonu Stil */
+.swal2-confirm {
+    background-color: #06BFFF !important; /* Onay butonu rengi */
+    color: #ffffff !important;
+    border: none;
+    border-radius: 5px !important;
+    padding: 10px 20px !important;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.swal2-confirm:hover {
+    background-color: #0288d1 !important; /* Onay butonu hover rengi */
+}
+
+/* İptal Butonu Stil */
+.swal2-cancel {
+    background-color: #FF3C3C !important; /* İptal butonu rengi */
+    color: #ffffff !important;
+    border: none;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.swal2-cancel:hover {
+    background-color: #d32f2f !important; /* İptal butonu hover rengi */
+}
+
+/* İkon Stil */
+.swal2-icon {
+    border-radius: 50%;
+    font-size: 20px !important;
+    color: #FFD700 !important; /* İkon rengi */
+}

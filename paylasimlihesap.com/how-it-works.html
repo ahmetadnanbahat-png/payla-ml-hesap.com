@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<!-- Mirrored from paylasimlihesap.com/how-it-works by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Aug 2025 19:39:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="tIWj54AF5hhFVR6akgKYcyVbUPIofgJyijt07i3bEqo=">
+    <link rel="stylesheet" href="static/css/sweetalert-custom.css">
+	<link rel="icon" href="static/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+    <title>Nasıl Çalışır - PaylasimliHesap.com</title>
+    
+    <!-- MENÜ SORUNUNU GİDERMEK İÇİN ACİL DÜZELTME -->
+    <style>
+        /* Body altındaki tüm doğrudan linkleri ve liste öğelerini tamamen gizle */
+        body > ul,
+        body > li,
+        body > a,
+        body > ul > li,
+        body > ul > li > a {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            left: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+            max-height: 0 !important;
+            max-width: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+            border: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Tüm bullet noktalarını kaldır */
+        ul, li {
+            list-style: none !important;
+        }
+
+        /* Mobil menü stil düzeltmeleri */
+        .mobile-menu {
+            position: fixed !important;
+            z-index: 1050 !important;
+            background: rgba(27, 40, 56, 0.97) !important;
+        }
+
+        /* Hamburger menü görünürlüğünü artır */
+        .hamburger-menu {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            width: 25px !important;
+            height: 20px !important;
+            margin-right: 15px !important;
+            z-index: 1100 !important;
+            cursor: pointer !important;
+        }
+
+        .hamburger-menu span {
+            display: block !important;
+            height: 2px !important;
+            width: 100% !important;
+            background-color: white !important;
+            border-radius: 2px !important;
+        }
+    </style>
+
+    <script type="27cb7ca7539ba505a707ab16-text/javascript">
+        // Sayfa yüklenirken hemen çalıştır
+        (function() {
+            // Sayfa yüklenmeden önce çalıştır
+            document.addEventListener('DOMContentLoaded', function() {
+                // Set up click handlers for all password toggle icons
+                const toggleCurrentPassword = document.getElementById('toggle-current-password');
+                const toggleNewPassword = document.getElementById('toggle-new-password');
+                const toggleConfirmPassword = document.getElementById('toggle-confirm-password');
+                
+                if (toggleCurrentPassword) {
+                    toggleCurrentPassword.addEventListener('click', function(e) {
+                        e.preventDefault(); // Prevent any default behavior
+                        togglePasswordVisibility('current-password', this);
+                    });
+                }
+                
+                if (toggleNewPassword) {
+                    toggleNewPassword.addEventListener('click', function(e) {
+                        e.preventDefault(); // Prevent any default behavior
+                        togglePasswordVisibility('new-password', this);
+                    });
+                }
+                
+                if (toggleConfirmPassword) {
+                    toggleConfirmPassword.addEventListener('click', function(e) {
+                        e.preventDefault(); // Prevent any default behavior
+                        togglePasswordVisibility('confirm-password', this);
+                    });
+                }
+            });
+
+            // Acil çözüm - sayfa parsing sırasında çalıştır
+            // Sayfa hemen yüklendikten sonra çalışacak
+            const removeUnwantedElements = function() {
+                const bodyElement = document.body;
+                if (!bodyElement) return;
+
+                // Body'nin tüm alt elementlerini kontrol et
+                Array.from(bodyElement.children).forEach(function(child) {
+                    if (child.tagName === 'UL') {
+                        child.style.display = 'none';
+                        child.style.visibility = 'hidden';
+                        // Güvenli kaldırma (tarayıcı desteği daha geniş)
+                        if (child.parentNode) {
+                            child.parentNode.removeChild(child);
+                        }
+                    }
+                });
+            };
+
+            // Hemen çalıştır ve periyodik olarak kontrol et
+            setTimeout(removeUnwantedElements, 0);
+            setTimeout(removeUnwantedElements, 100);
+            setTimeout(removeUnwantedElements, 500);
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="static/homepage.css">
+    <link rel="stylesheet" href="static/responsive.css">
+    
+    
+    <style type="text/css">@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" type="27cb7ca7539ba505a707ab16-text/javascript"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" type="27cb7ca7539ba505a707ab16-text/javascript"></script>
+    <script src="static/auth.js" type="27cb7ca7539ba505a707ab16-text/javascript"></script>
+    <style>
+        :root {
+            --primary: #06BFFF;
+            --primary-dark: #0497cc;
+            --secondary: #2D73FF;
+            --accent: #8E44AD;
+            --dark: #1b2838;
+            --darker: #171c24;
+            --light: #f7fafc;
+            --gray: #a0aec0;
+            --gray-dark: #4a5568;
+            --success: #48bb78;
+            --danger: #f56565;
+            --warning: #ed8936;
+        }
+        
+        .navbar {
+            height: 70px; /* İlk fotoğraftaki gibi daha büyük boyut */
+        }
+        
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-content:hover,
+        .user-icon:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .profile-text,
+        .specailLogin {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #f7fafc;
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            text-align: left;
+            padding-left: 0;
+            position: static;
+            height: auto;
+            font-size: 14px;
+            color: #D9DAE9;
+            align-self: center; /* Ensure vertical centering */
+        }
+        
+        .specailLogin small {
+            font-size: 11px;
+            line-height: 1.2;
+        }
+        
+
+        .login-button {
+            height: 45.23px; /* Match the profile button height */
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Increased from 8px */
+            background: linear-gradient(to right, rgba(78, 81, 103, 0.85), rgba(68, 71, 93, 0.9));
+            padding: 0; /* Removed padding to use fixed dimensions */
+            width: 102.46px; /* Exact width as requested */
+            height: 45.23px; /* Exact height as requested */
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-content {
+            display: flex;
+            align-items: center;
+            width: 102.46px; /* Match the profile button width */
+            height: 100%;
+            padding: 0 10px;
+            border-radius: 12px;
+            background: linear-gradient(to right, rgba(78, 81, 103, 0.85), rgba(68, 71, 93, 0.9));
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .login-content img {
+            width: 23px;
+            height: 23px;
+            display: flex;
+            align-self: center; /* Ensure vertical centering */
+        }
+        
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .password-container input {
+            width: 100%;
+            padding-right: 40px; /* Göz ikonu için yer açma */
+        }
+        
+        /* Göz ikonu için düzenlemeler */
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #06BFFF;
+            font-size: 18px;
+            z-index: 10;
+        }
+        
+        /* Çizgiler ve metin arasında boşluk için ayırıcı düzenlemesi */
+        .divider-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            justify-content: center; /* Center the content */
+            width: 100%;
+            position: relative;
+        }
+        
+        .divider-line {
+            width: 60px; /* Fixed width */
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 0 20px; /* Increased margin */
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        
+        .divider-text {
+            color: #a0aec0;
+            font-size: 14px;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            flex-shrink: 0; /* Prevent text from shrinking */
+        }
+        
+        #toggleText {
+            display: block;
+            margin: 25px 0 15px;
+            font-size: 15px;
+            color: #c7d5e0;
+            position: relative;
+            text-align: center;
+            /* Add padding to create clear space around the text */
+            padding: 0 80px;
+        }
+                    
+        #toggleText::before, #toggleText::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 60px; /* Fixed width instead of percentage */
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        #toggleText::before {
+            left: 3px; /* Absolute positioning */
+        }
+        
+        #toggleText::after {
+            right: 3px; /* Moved inward to start further from edge */
+        }
+
+        /* Logo styling */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* Main content container styling */
+        main {
+            min-height: calc(100vh - 270px); /* Adjust for footer and header */
+            padding-bottom: 30px; /* Add bottom padding to ensure no gap with footer */
+        }
+        
+        /* Container for consistent content width */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Enhanced Footer Styles matching the screenshot */
+        footer {
+            background: #171c24; /* Darker background matching the screenshot */
+            padding: 60px 0 30px;
+            position: relative;
+            margin-top: 0; /* Remove margin to eliminate gap */
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator */
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+            z-index: 5;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-block h3 {
+            color: #f7fafc;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .footer-block h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #06BFFF;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+
+        .footer-links a:hover {
+            color: #06BFFF;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 12px;
+            color: #06BFFF;
+        }
+
+        .footer-contact p {
+            color: #a0aec0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 15px;
+        }
+
+        .footer-contact p i {
+            color: #06BFFF;
+            font-size: 16px;
+            min-width: 16px;
+            margin-top: 4px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, #06BFFF 0%, #2D73FF 100%);
+            color: #f7fafc;
+            transform: translateY(-5px);
+        }
+
+        
+        .footer-newsletter p {
+            color: #a0aec0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 192, 244, 0.2);
+            border-radius: 8px;
+            color: #f7fafc;
+            font-size: 14px;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #06BFFF;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-button {
+            background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+            color: #f7fafc;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-button:hover {
+            filter: brightness(1.1);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #a0aec0;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-bottom a {
+            color: #06BFFF;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Footer */
+        @media screen and (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            footer {
+                padding: 50px 0 30px;
+            }
+            
+            .footer-container {
+                gap: 30px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-button {
+                width: 100%;
+                padding: 12px;
+            }
+        }
+
+        /* Bullet points'leri gizle */
+        .mobile-menu-links,
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Doğrudan sayfada gösterilen menü bağlantılarını gizleme */
+        body > ul > li > a {
+            display: none !important;
+        }
+
+        /* Sayfanın en üstünde görünen bullet points'leri gizleme */
+        body > ul {
+            display: none !important;
+        }
+        
+        /* Password hint styling */
+        .password-hint {
+            font-size: 12px;
+            color: #a0aec0;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+    
+<link rel="icon" href="static/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+<style>
+    /* Base CSS stilleriniz */
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    
+    .how-hero {
+        background: linear-gradient(rgba(27, 40, 56, 0.8), rgba(27, 40, 56, 0.9)), url('../images2.alphacoders.com/596/596921.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 160px 0 80px;
+        text-align: center;
+        position: relative;
+    }
+    
+    .how-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+        position: relative;
+    }
+    
+    .how-hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        color: #c7d5e0;
+        line-height: 1.6;
+    }
+    
+    .how-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, #1b2838, transparent);
+    }
+    
+    .how-section {
+        padding: 80px 0;
+        background: #1b2838;
+    }
+    
+    .how-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+    }
+    
+    .section-title h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #06BFFF, #2D73FF);
+        border-radius: 3px;
+    }
+    
+    .section-title p {
+        font-size: 1.1rem;
+        color: #a0aec0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    /* Process Steps */
+    .process-steps {
+        margin-bottom: 80px;
+    }
+    
+    .step-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        background: rgba(42, 45, 62, 0.6);
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(102, 192, 244, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .step-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        border-color: rgba(102, 192, 244, 0.3);
+    }
+    
+    .step-number {
+        flex: 0 0 120px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, rgba(6, 191, 255, 0.2), rgba(45, 115, 255, 0.2));
+        border-right: 1px solid rgba(102, 192, 244, 0.2);
+    }
+    
+    .number-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #06BFFF, #2D73FF);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+    }
+    
+    .step-content {
+        flex: 1;
+        padding: 30px;
+    }
+    
+    .step-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: white;
+    }
+    
+    .step-content p {
+        font-size: 1.05rem;
+        color: #c7d5e0;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+    
+    .step-icon {
+        margin-right: 15px;
+        font-size: 2rem;
+        color: #06BFFF;
+    }
+    
+    /* Even steps have reversed colors */
+    .step-container:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    
+    .step-container:nth-child(even) .step-number {
+        border-right: none;
+        border-left: 1px solid rgba(102, 192, 244, 0.2);
+    }
+    
+    /* Benefits section - UPDATED */
+    .benefits-section {
+        padding: 80px 0;
+        background: linear-gradient(to bottom, #1b2838, #192230);
+        position: relative;
+    }
+    
+    .benefits-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, #1b2838, transparent);
+    }
+    
+    .benefits-title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .benefits-title h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 20px;
+    }
+    
+    .benefits-title p {
+        font-size: 1.1rem;
+        color: #a0aec0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    
+    /* Updated benefit card with centered content */
+    .benefit-card {
+        background: rgba(42, 45, 62, 0.6);
+        border-radius: 15px;
+        padding: 30px 20px;
+        border: 1px solid rgba(102, 192, 244, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Auto hover loop animation for benefit cards */
+    @keyframes pulseCard {
+        0% {
+            transform: translateY(0);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(102, 192, 244, 0.1);
+        }
+        50% {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(102, 192, 244, 0.3);
+        }
+        100% {
+            transform: translateY(0);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(102, 192, 244, 0.1);
+        }
+    }
+    
+    .benefit-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(102, 192, 244, 0.5);
+    }
+    
+    .benefit-icon {
+        font-size: 3rem;
+        margin: 0 auto 20px;
+        background: linear-gradient(90deg, #06BFFF, #2D73FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover .benefit-icon {
+        transform: scale(1.2);
+    }
+    
+    @keyframes pulseIcon {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.15);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    .benefit-card h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: white;
+        text-align: center;
+    }
+    
+    .benefit-card p {
+        font-size: 1rem;
+        color: #c7d5e0;
+        line-height: 1.6;
+        text-align: center;
+    }
+    
+    /* FAQ Link Section */
+    .faq-link-section {
+        padding: 80px 0;
+        background: linear-gradient(to bottom, #192230, #171c27);
+        position: relative;
+        text-align: center;
+    }
+
+    .faq-link-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, #192230, transparent);
+    }
+    
+    .faq-link-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .faq-link-content h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 20px;
+    }
+    
+    .faq-link-content p {
+        font-size: 1.1rem;
+        color: #a0aec0;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    
+    .faq-link-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(6, 191, 255, 0.4);
+        transition: all 0.3s ease;
+    }
+    
+    .faq-link-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(6, 191, 255, 0.6);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        padding: 100px 0 0;
+        text-align: center;
+        background: linear-gradient(rgba(23, 28, 39, 0.8), rgba(23, 28, 39, 0.98)), url('../gallery.gtavision.com/pics/v_artwork10.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        margin-bottom: -30px;
+        border-bottom: none;
+    }
+    
+    .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, #171c27, transparent);
+    }
+    
+    .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .cta-section h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 20px;
+    }
+    
+    .cta-section p {
+        font-size: 1.1rem;
+        color: #c7d5e0;
+        margin: 0 auto 30px;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(6, 191, 255, 0.4);
+        transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(6, 191, 255, 0.6);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .how-hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .how-hero p {
+            font-size: 1.1rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+        }
+        
+        .step-container, .step-container:nth-child(even) {
+            flex-direction: column;
+        }
+        
+        .step-number {
+            width: 100%;
+            flex: 0 0 auto;
+            padding: 20px;
+            border-right: none;
+            border-left: none;
+            border-bottom: 1px solid rgba(102, 192, 244, 0.2);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .how-hero h1 {
+            font-size: 2.2rem;
+        }
+        
+        .how-hero p {
+            font-size: 1rem;
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
+        }
+        
+        .step-content h3 {
+            font-size: 1.3rem;
+        }
+        
+        .benefit-card {
+            padding: 25px;
+        }
+        
+        .faq-link-content h2 {
+            font-size: 1.8rem;
+        }
+        
+        .faq-link-button {
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .how-hero h1 {
+            font-size: 2rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 1.8rem;
+        }
+        
+        .step-content {
+            padding: 20px;
+        }
+        
+        .faq-link-content h2 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <!-- Bu div, istenmeyen içeriği gizlemek için -->
+    <div style="display:none !important; visibility:hidden !important; position:absolute; z-index:-9999;">
+        <!-- Sorunlu menü öğeleri buraya taşınır (otomatik olarak JS tarafından) -->
+    </div>
+    
+    <!-- Üst Navbar -->
+    <div class="top-navbar">
+        İstediğin oyuna en uygun fiyattan ulaş!
+    </div>
+
+    <!-- Ana Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">             
+                <a href="index.html" class="logo-container">
+                    <img src="static/logo.svg" alt="Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links auth-links">
+                    
+                        <li onclick="if (!window.__cfRLUnblockHandlers) return false; openAuthModal()" class="login-button" data-cf-modified-27cb7ca7539ba505a707ab16-="">
+                            <div class="login-content">
+                                <img src="static/login.svg" 
+                                    width="23" height="23" alt="Üye Ol Giriş Yap">
+                                <div class="specailLogin">Giriş Yap<small> veya üye ol</small></div>
+                            </div>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Ana İçerik -->
+    <main>
+        
+<!-- Hero Section -->
+<section class="how-hero">
+    <div class="container">
+        <h1>Nasıl Çalışır?</h1>
+        <p>PaylasimliHesap.com, oyun dünyasına ekonomik erişim sağlamak için tasarlanmış yenilikçi bir platformdur. Orijinal oyunları uygun fiyatlarla paylaşarak kazanç sağlayan iş modelimizi keşfedin.</p>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-section">
+    <div class="how-content">
+        <div class="section-title">
+            <h2>İş Modelimiz</h2>
+            <p>PaylasimliHesap.com olarak, oyun dünyasında yeni bir ekonomik model yaratıyoruz. Böylece hem oyunseverler kazanıyor, hem de biz!</p>
+        </div>
+        
+        <div class="process-steps">
+            <div class="step-container" data-aos="fade-right">
+                <div class="step-number">
+                    <div class="number-circle">1</div>
+                </div>
+                <div class="step-content">
+                    <h3><i class="fas fa-shopping-cart step-icon"></i>Orijinal Oyunları Satın Alıyoruz</h3>
+                    <p>Öncelikle, Steam, Epic Games, Xbox ve diğer platformlardan en popüler oyunları orijinal fiyatlarıyla satın alıyoruz. Sadece resmi ve lisanslı oyunlar kullanıyoruz, böylece güvenliğinizi sağlıyoruz.</p>
+                </div>
+            </div>
+            
+            <div class="step-container" data-aos="fade-left">
+                <div class="step-number">
+                    <div class="number-circle">2</div>
+                </div>
+                <div class="step-content">
+                    <h3><i class="fas fa-users step-icon"></i>Hesap Erişimini Paylaşıyoruz</h3>
+                    <p>Satın aldığımız oyunlara erişimi birden fazla kullanıcı arasında paylaştırıyoruz. Oyun platformlarının izin verdiği eş zamanlı olmayan erişim kurallarına tam uyum sağlıyoruz. Bu sayede, tek bir oyun hesabını birkaç kullanıcı arasında güvenle paylaşabiliyoruz.</p>
+                </div>
+            </div>
+            
+            <div class="step-container" data-aos="fade-right">
+                <div class="step-number">
+                    <div class="number-circle">3</div>
+                </div>
+                <div class="step-content">
+                    <h3><i class="fas fa-tags step-icon"></i>Hesap Erişimini Uygun Fiyatlarla Sunuyoruz</h3>
+                    <p>Paylaşımlı erişim modeli sayesinde, kullanıcılarımıza orijinal fiyatın çok altında bir maliyetle oyunlara erişim sağlıyoruz. Bir oyun için 1300 TL ödemek yerine, sadece 25-30 TL ödeyerek aynı oyunu oynayabilirsiniz. Tek fark, diğer kullanıcılarla aynı oynama saatini paylaşmanız.</p>
+                </div>
+            </div>
+            
+            <div class="step-container" data-aos="fade-left">
+                <div class="step-number">
+                    <div class="number-circle">4</div>
+                </div>
+                <div class="step-content">
+                    <h3><i class="fas fa-robot step-icon"></i>Otomatik Sistemimiz Erişimi Yönetiyor</h3>
+                    <p>Gelişmiş otomasyon sistemimiz, hesapların kullanımını optimize ediyor ve çakışmaları önlüyor. Kullanıcılarımız istedikleri zaman oyun oynamak için kesilmiyor, hesap yönetimi sorunlarıyla uğraşmıyor. Tüm bu süreçleri otomatik sistemimiz hallediyor.</p>
+                </div>
+            </div>
+            
+            <div class="step-container" data-aos="fade-right">
+                <div class="step-number">
+                    <div class="number-circle">5</div>
+                </div>
+                <div class="step-content">
+                    <h3><i class="fas fa-hand-holding-usd step-icon"></i>Kazan-Kazan Modelimiz İşliyor</h3>
+                    <p>Sonuç olarak, siz oyun tutkunları istediğiniz oyunlara uygun fiyatlarla erişim kazanırken, biz de aynı hesabı birden fazla kişiye satarak kâr elde ediyoruz. Bu model sayesinde hem oyuncular kazanıyor, hem platform büyüyor, hem de kaliteli bir hizmet sürdürülebilir hale geliyor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+    <div class="container">
+        <div class="benefits-title">
+            <h2>Hesap Paylaşımının Avantajları</h2>
+            <p>PaylasimliHesap.com ile paylaşımlı hesap kullanmanın size sunduğu benzersiz faydaları keşfedin.</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card" id="card1">
+                <div class="benefit-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3>Büyük Tasarruf</h3>
+                <p>Orijinal fiyatlardan %90-95 daha uygun maliyetle oyunlara erişim sağlayın. AAA oyunları çok daha ekonomik fiyatlarla deneyimleyin.</p>
+            </div>
+            
+            <div class="benefit-card" id="card2">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Tamamen Güvenli</h3>
+                <p>Tüm oyunlarımız Steam, Epic, Xbox gibi platformlardan satın alınmış orijinal oyunlardır. Zararlı yazılım bulaşma gibi riskler asla bulunmamaktadır.</p>
+            </div>
+            
+            <div class="benefit-card" id="card3">
+                <div class="benefit-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Daha Fazla Oyun</h3>
+                <p>Aynı bütçeyle çok daha fazla oyun oynayabilirsiniz. Böylece daha geniş bir oyun yelpazesini deneyimleme şansı yakalarsınız.</p>
+            </div>
+            
+            <div class="benefit-card" id="card4">
+                <div class="benefit-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Esnek Erişim</h3>
+                <p>Tüm hesaplara istediğiniz zaman istediğiniz saatte erişebilirsiniz, tam otomatik sistem bulunmaktadır. Guard kodları sitemizde otomatik olarak iletilmektedir.</p>
+            </div>
+            
+            <div class="benefit-card" id="card5">
+                <div class="benefit-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>7/24 Destek</h3>
+                <p>Herhangi bir sorun yaşadığınızda, deneyimli destek ekibimiz size yardımcı olmak için her zaman hazır. Sorunlarınızı hızlıca çözüyoruz.</p>
+            </div>
+            
+            <div class="benefit-card" id="card6">
+                <div class="benefit-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Anında Erişim</h3>
+                <p>Anahtarınızı kullandıktan sonra, oyun hesabınıza anında erişim sağlarsınız. İstediğiniz oyunu indirdikten sonra, hemen oynamaya başlayabilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Link Section -->
+<section class="faq-link-section">
+    <div class="container">
+        <div class="faq-link-content">
+            <h2>Sorularınız mı Var?</h2>
+            <p>Hesap paylaşımı, ödeme, teknik destek ve diğer konulardaki tüm sorularınızın cevaplarını Sık Sorulan Sorular sayfamızda bulabilirsiniz.</p>
+            <a href="faq.html" class="faq-link-button">Sık Sorulan Sorular</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Oyun Deneyiminizi Dönüştürün</h2>
+        <p>Ekonomik, güvenli ve kullanıcı dostu hesap paylaşım sistemimizle oyun dünyasını keşfedin. Binlerce oyuncunun tercih ettiği PaylasimliHesap.com ailesine siz de katılın.</p>
+        <a href="javascript:void(0);" class="cta-button" onclick="if (!window.__cfRLUnblockHandlers) return false; openAuthModal()" data-cf-modified-27cb7ca7539ba505a707ab16-="">Hemen Üye Ol</a>
+        <!-- En son padding ekleyerek footer'a kadar yer oluştur -->
+        <div style="padding-bottom: 80px;"></div>
+    </div>
+</section>
+
+<script type="27cb7ca7539ba505a707ab16-text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS (Animate on Scroll)
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+        }
+        
+        // Auto-hover animation for benefit cards
+        function setupAutoHover() {
+            const cards = document.querySelectorAll('.benefit-card');
+            let currentCardIndex = 0;
+            
+            function animateNextCard() {
+                // Remove animation from all cards
+                cards.forEach(card => {
+                    card.style.animation = 'none';
+                    card.querySelector('.benefit-icon').style.animation = 'none';
+                });
+                
+                // Add animation to current card
+                const currentCard = cards[currentCardIndex];
+                currentCard.style.animation = 'pulseCard 2s ease-in-out';
+                currentCard.querySelector('.benefit-icon').style.animation = 'pulseIcon 2s ease-in-out';
+                
+                // Move to next card
+                currentCardIndex = (currentCardIndex + 1) % cards.length;
+                
+                // Schedule next animation
+                setTimeout(animateNextCard, 2000);
+            }
+            
+            // Start the animation loop
+            animateNextCard();
+        }
+        
+        // Start the auto-hover animation
+        setupAutoHover();
+    });
+</script>
+
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <!-- Company Information -->
+                <div class="footer-block">
+                    <h3>Hakkımızda</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-angle-right"></i> Biz Kimiz</a></li>
+                        <li><a href="how-it-works.html"><i class="fas fa-angle-right"></i> Nasıl Çalışır</a></li>
+                        <li><a href="testimonials.html"><i class="fas fa-angle-right"></i> Müşteri Yorumları</a></li>
+                        <li><a href="blog.html"><i class="fas fa-angle-right"></i> Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Support -->
+                <div class="footer-block">
+                    <h3>Müşteri Desteği</h3>
+                    <ul class="footer-links">
+                        <li><a href="faq.html"><i class="fas fa-angle-right"></i> Sık Sorulan Sorular</a></li>
+                        <li><a href="https://www.itemsatis.com/p/GoofyShop"><i class="fas fa-angle-right"></i> Bize Ulaşın</a></li>
+                        <li><a href="index.html"><i class="fas fa-angle-right"></i> Destek Sistemi</a></li>
+                        <li><a href="terms.html"><i class="fas fa-angle-right"></i> Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="footer-block footer-contact">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bursa, Türkiye</p>
+                    
+                    <div class="footer-social">
+                        <a href="https://www.itemsatis.com/p/GoofyShop" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.itemsatis.com/p/GoofyShop" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.itemsatis.com/p/GoofyShop" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.itemsatis.com/p/GoofyShop" class="social-icon"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="footer-block footer-newsletter">
+                    <h3>Bülten</h3>
+                    <p>En yeni oyunlar, indirimler ve kampanyalar hakkında bilgi almak için abone olun.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="E-posta adresiniz">
+                        <button type="submit" class="newsletter-button"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 PaylasimliHesap.com | <a href="privacy-policy.html">Gizlilik Sözleşmesi</a> | <a href="terms.html">Kullanım Şartları</a></p>
+                <p class="copyright">Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Giriş ve Kayıt Ol Modal - GÜVENLI VERSIYONU -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="if (!window.__cfRLUnblockHandlers) return false; closeAuthModal()" data-cf-modified-27cb7ca7539ba505a707ab16-="">&times;</span>
+            <div class="modal-header">
+                <h2>Giriş Yap</h2>
+            </div>
+            <div class="modal-body">
+                <!-- Secure login form with autocomplete correctly configured -->
+                <form id="loginForm" method="post" action="https://paylasimlihesap.com/login" autocomplete="off">
+                    <input type="hidden" name="csrf_token" value="tIWj54AF5hhFVR6akgKYcyVbUPIofgJyijt07i3bEqo=">
+                    <div class="field">
+                        <label for="username">Kullanıcı Adı</label>
+                        <input type="text" id="username" name="UserName" autocomplete="username">
+                    </div>
+                    <div class="field loginPassword">
+                        <label for="password">Parola <span class="forgot-password" onclick="if (!window.__cfRLUnblockHandlers) return false; forgotPassword()" data-cf-modified-27cb7ca7539ba505a707ab16-="">Şifremi unuttum</span></label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="Password" autocomplete="current-password">
+                            <!-- Change toggle implementation to be more secure -->
+                            <i class="fa fa-eye password-toggle" id="passwordToggle" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <!-- Changed to submit type for better accessibility and security -->
+                    <button type="button" class="loginSubmitBtn" onclick="if (!window.__cfRLUnblockHandlers) return false; secureLoginUser()" data-cf-modified-27cb7ca7539ba505a707ab16-="">Giriş Yap</button>
+                </form>
+                <small id="toggleText">Halen bir üyeliğiniz yok mu?</small><br>
+                <button id="toggleButton" class="ui button violet" onclick="if (!window.__cfRLUnblockHandlers) return false; secureToggleAuthMode()" data-cf-modified-27cb7ca7539ba505a707ab16-="">Hemen Ücretsiz Kaydol</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="27cb7ca7539ba505a707ab16-text/javascript">
+        // Helper function to get CSRF token from the page
+        function getCsrfToken() {
+            // Check for a meta tag with name="csrf-token"
+            const metaToken = document.querySelector('meta[name="csrf-token"]');
+            if (metaToken) {
+                return metaToken.getAttribute('content');
+            }
+            
+            // Or check for a hidden input with name="csrf_token"
+            const inputToken = document.querySelector('input[name="csrf_token"]');
+            if (inputToken) {
+                return inputToken.value;
+            }
+            
+            // If we can't find it, return an empty string
+            console.error('CSRF token not found on page');
+            return '';
+        }
+
+        // Toggle user dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('userDropdown');
+            const userIcon = document.querySelector('.user-icon');
+            if (dropdown && userIcon && !userIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Authentication modal functions with animation
+        function openAuthModal() {
+            const modal = document.getElementById('authModal');
+            
+            // First set display to block
+            modal.style.display = 'block';
+            
+            // Force a reflow to ensure the browser processes the display change
+            void modal.offsetWidth;
+            
+            // Then add the animation class
+            modal.classList.add('show');
+            
+            // Prevent scrolling on the body when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            
+            // Remove the animation class
+            modal.classList.remove('show');
+            
+            // Wait for animation to finish before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+                // Restore scrolling on the body
+                document.body.style.overflow = '';
+            }, 300); // Match this to your animation duration
+        }
+
+        // SECURE password toggle function - uses secure context
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordToggle = document.getElementById('passwordToggle');
+            if (passwordToggle) {
+                passwordToggle.addEventListener('click', function() {
+                    const passwordField = document.getElementById('password');
+                    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordField.setAttribute('type', type);
+                    
+                    // Toggle icon
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            }
+        });
+
+        // SECURE toggle for new password
+        function secureToggleNewPassword() {
+            const passwordField = document.getElementById('newPasswordInput');
+            const icon = document.querySelector('#newPasswordToggle');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // SECURE auth mode toggle - using proper form attributes
+        function secureToggleAuthMode() {
+            const modalTitle = document.querySelector('.modal-header h2');
+            const formContainer = document.getElementById('loginForm');
+            const toggleText = document.getElementById('toggleText');
+            const toggleButton = document.getElementById('toggleButton');
+            
+            // Get CSRF token value (should be available in the current form)
+            const csrfToken = getCsrfToken();
+
+            if (modalTitle.textContent === 'Giriş Yap') {
+                // Switch to register view with secure form controls
+                modalTitle.textContent = 'Kayıt Ol';
+                formContainer.setAttribute('autocomplete', 'off');
+                formContainer.setAttribute('action', '/register');
+                formContainer.innerHTML = `
+                    <input type="hidden" name="csrf_token" value="${csrfToken}">
+                    <div class="field">
+                        <label for="newusername">Kullanıcı Adı</label>
+                        <input type="text" id="newusername" name="NewUserName" placeholder="Kullanıcı adınızı oluşturun" autocomplete="username">
+                    </div>
+                    <div class="field">
+                        <label for="email">E-Posta</label>
+                        <input type="email" id="email" name="Email" placeholder="E-posta adresinizi girin" autocomplete="email">
+                    </div>
+                    <div class="field">
+                        <label for="newPasswordInput">Şifre</label>
+                        <div class="password-container">
+                            <input type="password" id="newPasswordInput" name="NewPassword" placeholder="Güçlü bir şifre oluşturun" autocomplete="new-password">
+                            <i class="fa fa-eye password-toggle" id="newPasswordToggle" onclick="secureToggleNewPassword()"></i>
+                        </div>
+                        <small class="password-hint">En az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir.</small>
+                    </div>
+                    <button type="button" class="loginSubmitBtn" onclick="secureRegisterUser()">Kaydol</button>
+                `;
+                toggleText.textContent = 'Zaten bir üyeliğiniz var mı?';
+                toggleButton.textContent = 'Hemen Giriş Yap';
+            } else {
+                // Switch back to login view with secure form controls
+                modalTitle.textContent = 'Giriş Yap';
+                formContainer.setAttribute('autocomplete', 'off');
+                formContainer.setAttribute('action', '/login');
+                formContainer.innerHTML = `
+                    <input type="hidden" name="csrf_token" value="${csrfToken}">
+                    <div class="field">
+                        <label for="username">Kullanıcı Adı</label>
+                        <input type="text" id="username" name="UserName" autocomplete="username">
+                    </div>
+                    <div class="field loginPassword">
+                        <label for="password">Parola <span class="forgot-password" onclick="forgotPassword()">Şifremi unuttum</span></label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="Password" autocomplete="current-password">
+                            <i class="fa fa-eye password-toggle" id="passwordToggle" onclick="this.classList.toggle('fa-eye-slash'); document.getElementById('password').type = document.getElementById('password').type === 'password' ? 'text' : 'password';"></i>
+                        </div>
+                    </div>
+                    <button type="button" class="loginSubmitBtn" onclick="secureLoginUser()">Giriş Yap</button>
+                `;
+                toggleText.textContent = 'Halen bir üyeliğiniz yok mu?';
+                toggleButton.textContent = 'Hemen Ücretsiz Kaydol';
+            }
+        }
+
+        // SECURE login user function using credentials API correctly
+        function secureLoginUser() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const csrfToken = getCsrfToken();
+            
+            // Validation
+            if (!username || !password) {
+                showAlert('error', 'Hata', 'Lütfen kullanıcı adı ve şifre giriniz.');
+                return;
+            }
+            
+            // Send login request to the server using secure headers
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
+                },
+                credentials: 'same-origin', // Important: include cookies in the request
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    csrf_token: csrfToken
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showAlert('success', 'Başarılı', 'Giriş başarılı, yönlendiriliyorsunuz...');
+                    // Redirect after successful login
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/';
+                    }, 1500);
+                } else {
+                    showAlert('error', 'Hata', data.message || 'Giriş başarısız.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showAlert('error', 'Hata', 'Bir hata oluştu. Lütfen tekrar deneyin.');
+            });
+        }
+
+        // SECURE register user function using credentials API correctly
+        function secureRegisterUser() {
+            const username = document.getElementById('newusername').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('newPasswordInput').value;
+            const csrfToken = getCsrfToken();
+            
+            // Validation
+            if (!username || !email || !password) {
+                showAlert('error', 'Hata', 'Lütfen tüm alanları doldurunuz.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showAlert('error', 'Hata', 'Lütfen geçerli bir e-posta adresi giriniz.');
+                return;
+            }
+            
+            // Password validation
+            if (password.length < 8 || !/[A-Z]/.test(password) || 
+                !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+                showAlert('error', 'Hata', 'Şifre en az 8 karakter olmalı ve en az bir büyük harf, bir küçük harf ve bir rakam içermelidir.');
+                return;
+            }
+            
+            // Send registration request to the server with secure headers
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
+                },
+                credentials: 'same-origin', // Important: include cookies in the request
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    csrf_token: csrfToken
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showAlert('success', 'Başarılı', 'Kayıt başarılı! Giriş yapılıyor...');
+                    // Switch back to login view after successful registration
+                    setTimeout(() => {
+                        const modalTitle = document.querySelector('.modal-header h2');
+                        if (modalTitle.textContent !== 'Giriş Yap') {
+                            secureToggleAuthMode();
+                        }
+                        // Refresh the page after switching to login view
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showAlert('error', 'Hata', data.message || 'Kayıt başarısız.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showAlert('error', 'Hata', 'Bir hata oluştu. Lütfen tekrar deneyin.');
+            });
+        }
+
+        function forgotPassword() {
+            // This would be your password reset logic
+            showAlert('error', 'Hata', 'Şifre sıfırlama özelliği şu anda aktif değil, şifrenizi hatırlamıyorsanız sayfanın altındaki "Bize Ulaşın" kısmından lütfen iletişime geçip mail adresinizi iletin.');
+        }
+
+        function showAlert(icon, title, text) {
+            Swal.fire({
+                icon: icon,
+                title: title,
+                text: text,
+                customClass: {
+                    popup: 'animated-alert'
+                }
+            });
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('authModal');
+            if (event.target == modal) {
+                closeAuthModal();
+            }
+        }
+
+        // Close modal when pressing ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAuthModal();
+            }
+        });
+
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: 'Çıkış yapmak istediğinize emin misiniz?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet, çıkış yap',
+                cancelButtonText: 'İptal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Use POST method for logout (CSRF protected)
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/logout';
+                    
+                    // Add CSRF token
+                    const csrfField = document.createElement('input');
+                    csrfField.type = 'hidden';
+                    csrfField.name = 'csrf_token';
+                    csrfField.value = getCsrfToken();
+                    form.appendChild(csrfField);
+                    
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+        
+        // Sayfa yüklendiğinde otomatik çalışacak işlemler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sayfa yüklendiğinde bullet list sorununu düzeltme
+            const bodyDirectChildUL = document.querySelectorAll('body > ul');
+            bodyDirectChildUL.forEach(element => {
+                element.style.display = 'none';
+                if (element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+            });
+            
+            // Mobil menü fonksiyonelliği
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if(hamburgerMenu && mobileMenu) {
+                // Hamburger menü tıklama olayı
+                hamburgerMenu.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Etkinliğin yayılmasını durdur
+                    this.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                    
+                    // Menü açıkken body scrollunu engelle
+                    if(mobileMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // Mobil menü içindeki linklere tıklama olayı
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburgerMenu.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+                
+                // Sayfa yüklendiğinde mobil menüyü gizle (ek güvenlik için)
+                mobileMenu.classList.remove('active');
+                hamburgerMenu.classList.remove('active');
+            }
+            
+            // Doküman üzerine tıklama ile menüyü kapatma
+            document.addEventListener('click', function(event) {
+                if (mobileMenu && 
+                    mobileMenu.classList.contains('active') && 
+                    !mobileMenu.contains(event.target) && 
+                    !hamburgerMenu.contains(event.target)) {
+                    
+                    mobileMenu.classList.remove('active');
+                    hamburgerMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Ekran boyutu değişimini izle
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    hamburgerMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // En üst seviyede direkt listeler varsa kaldır (agresif kaldırma)
+            setInterval(function() {
+                const bodyUls = document.querySelectorAll('body > ul');
+                bodyUls.forEach(ul => {
+                    ul.style.display = 'none';
+                    ul.style.visibility = 'hidden';
+                    if (ul.parentNode) {
+                        ul.parentNode.removeChild(ul);
+                    }
+                });
+            }, 200);
+        });
+    </script>
+<script src="cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="27cb7ca7539ba505a707ab16-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"0bb01b51692a4580bead07924ea1a1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from paylasimlihesap.com/how-it-works by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Aug 2025 19:39:31 GMT -->
+</html>

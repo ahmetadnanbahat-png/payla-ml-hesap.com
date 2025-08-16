@@ -1,0 +1,1368 @@
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - PaylaşımlıHesap</title>
+    <link rel="stylesheet" href="static/homepage.css">
+    <link rel="stylesheet" href="static/responsive.css">
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #1b2838;
+            min-height: 100vh;
+            padding-top: 110px;
+        }
+        
+        .admin-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #06BFFF 0%, #2D73FF 100%);
+            border-radius: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(6, 191, 255, 0.3);
+        }
+        
+        .admin-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .admin-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-tab {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(102, 192, 244, 0.2);
+            border-radius: 12px;
+            color: #f7fafc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-tab:hover {
+            background: rgba(102, 192, 244, 0.1);
+            border-color: rgba(102, 192, 244, 0.4);
+        }
+        
+        .admin-tab.active {
+            background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+            border-color: transparent;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(6, 191, 255, 0.2);
+        }
+        
+        .stat-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(6, 191, 255, 0.2) 0%, rgba(45, 115, 255, 0.2) 100%);
+            margin-bottom: 15px;
+        }
+        
+        .stat-icon i {
+            font-size: 28px;
+            background: linear-gradient(135deg, #06BFFF 0%, #2D73FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #06BFFF 0%, #2D73FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #f7fafc;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(102, 192, 244, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            color: #f7fafc;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+        
+        .section-title i {
+            color: #06BFFF;
+            font-size: 1.5rem;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(6, 191, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 191, 255, 0.5);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(90deg, #ff6b6b, #ee5a5a);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+        
+        .btn-success {
+            background: linear-gradient(90deg, #51cf66, #40c057);
+            color: white;
+            box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(81, 207, 102, 0.5);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, #06BFFF 0%, #2D73FF 100%);
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .data-table td {
+            padding: 15px 12px;
+            color: #f7fafc;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.85rem;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(102, 192, 244, 0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: rgba(27, 40, 56, 0.95);
+            border: 1px solid rgba(102, 192, 244, 0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            margin-bottom: 25px;
+        }
+        
+        .modal-header h3 {
+            color: #f7fafc;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #a0aec0;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #ff6b6b;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #f7fafc;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(44, 62, 80, 0.5);
+            border: 1px solid rgba(102, 192, 244, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #06BFFF;
+            box-shadow: 0 0 0 3px rgba(6, 191, 255, 0.3);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .logout-btn {
+            position: fixed;
+            top: 130px;
+            right: 30px;
+            background: linear-gradient(90deg, #ff6b6b, #ee5a5a);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+        }
+        
+        .game-card h4 {
+            color: #06BFFF;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .game-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .game-detail {
+            color: #f7fafc;
+        }
+        
+        .game-detail strong {
+            color: #06BFFF;
+        }
+        
+        .accounts-list {
+            margin-top: 15px;
+        }
+        
+        .account-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .account-info {
+            color: #f7fafc;
+            font-size: 0.9rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .admin-container {
+                margin: 10px;
+                padding: 0 10px;
+            }
+            
+            .admin-tabs {
+                flex-direction: column;
+            }
+            
+            .logout-btn {
+                position: static;
+                margin-bottom: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Üst Navbar -->
+    <div class="top-navbar">
+        <i class="fas fa-shield-alt"></i> Admin Panel - Yönetim Sistemi
+    </div>
+
+    <!-- Ana Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">             
+                <a href="index.html" class="logo-container">
+                    <img src="static/logo.svg" alt="Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-shield-alt"></i> Admin Panel</h1>
+            <p>Yönetim ve Kontrol Sistemi</p>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <div class="admin-tab active" onclick="switchTab('dashboard')">
+                <i class="fas fa-tachometer-alt"></i> Genel Bakış
+            </div>
+            <div class="admin-tab" onclick="switchTab('games')">
+                <i class="fas fa-gamepad"></i> Oyun Yönetimi
+            </div>
+            <div class="admin-tab" onclick="switchTab('users')">
+                <i class="fas fa-users"></i> Kullanıcılar
+            </div>
+            <div class="admin-tab" onclick="switchTab('keys')">
+                <i class="fas fa-key"></i> Key Yönetimi
+            </div>
+            <div class="admin-tab" onclick="switchTab('suggestions')">
+                <i class="fas fa-lightbulb"></i> Öneriler
+            </div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" id="totalUsers">0</div>
+                    <div class="stat-label">Toplam Kullanıcı</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="stat-number" id="totalGames">0</div>
+                    <div class="stat-label">Toplam Oyun</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="stat-number" id="totalAccounts">0</div>
+                    <div class="stat-label">Toplam Hesap</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number" id="specialGames">0</div>
+                    <div class="stat-label">Özel Oyun</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="stat-number" id="totalKeys">0</div>
+                    <div class="stat-label">Toplam Key</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="stat-number" id="totalSuggestions">0</div>
+                    <div class="stat-label">Oyun Önerisi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="stat-number" id="totalAdmins">0</div>
+                    <div class="stat-label">Admin Sayısı</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Games Tab -->
+        <div id="games" class="tab-content">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-gamepad"></i>
+                    Oyun Yönetimi
+                    <button class="btn btn-primary" onclick="openAddGameModal()" style="margin-left: auto;">
+                        <i class="fas fa-plus"></i> Yeni Oyun Ekle
+                    </button>
+                </div>
+                <div id="gamesList">
+                    <!-- Oyunlar buraya yüklenecek -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Tab -->
+        <div id="users" class="tab-content">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-users"></i>
+                    Kullanıcı Listesi
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-user"></i> Kullanıcı Adı</th>
+                                <th><i class="fas fa-envelope"></i> E-posta</th>
+                                <th><i class="fas fa-tag"></i> Rol</th>
+                                <th><i class="fas fa-calendar"></i> Kayıt Tarihi</th>
+                                <th><i class="fas fa-cogs"></i> İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Kullanıcılar buraya yüklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keys Tab -->
+        <div id="keys" class="tab-content">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-key"></i>
+                    Key Yönetimi
+                    <button class="btn btn-primary" onclick="openAddKeyModal()" style="margin-left: auto;">
+                        <i class="fas fa-plus"></i> Yeni Key Ekle
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Oyun</th>
+                                <th>Durum</th>
+                                <th>Oluşturulma</th>
+                                <th>Kullanım</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="keysTableBody">
+                            <!-- Keyler buraya yüklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestions Tab -->
+        <div id="suggestions" class="tab-content">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Oyun Önerileri
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Oyun Adı</th>
+                                <th>Önerilen Kullanıcı</th>
+                                <th>Açıklama</th>
+                                <th>Tarih</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="suggestionsTableBody">
+                            <!-- Öneriler buraya yüklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Game Modal -->
+    <div id="addGameModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal('addGameModal')">&times;</div>
+            <div class="modal-header">
+                <h3>Yeni Oyun Ekle</h3>
+            </div>
+            <form id="addGameForm" onsubmit="addGame(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gameName">Oyun Adı *</label>
+                        <input type="text" id="gameName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gameAppID">App ID (Steam/Epic) *</label>
+                        <input type="text" id="gameAppID" name="appID" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gamePlatform">Platform *</label>
+                        <select id="gamePlatform" name="platform" required>
+                            <option value="">Platform Seçin</option>
+                            <option value="steam">Steam</option>
+                            <option value="epic">Epic Games</option>
+                            <option value="origin">Origin</option>
+                            <option value="uplay">Uplay</option>
+                            <option value="xbox">Xbox Game Pass</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="gamePrice">Fiyat (₺)</label>
+                        <input type="number" id="gamePrice" name="price" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gameCategory">Kategori</label>
+                    <input type="text" id="gameCategory" name="category" placeholder="Aksiyon, RPG, Strateji...">
+                </div>
+                <div class="form-group">
+                    <label for="gameDescription">Açıklama</label>
+                    <textarea id="gameDescription" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="gameImage">Görsel URL</label>
+                    <input type="url" id="gameImage" name="libraryImage" placeholder="https://...">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="isSpecial" name="isSpecial">
+                    <label for="isSpecial">Özel Oyun (Ayrı Fiyatlandırma)</label>
+                </div>
+                <div class="form-group" id="specialPriceGroup" style="display: none;">
+                    <label for="specialPrice">Özel Fiyat (₺)</label>
+                    <input type="number" id="specialPrice" name="specialPrice" step="0.01">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Oyun Ekle
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Account Modal -->
+    <div id="addAccountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal('addAccountModal')">&times;</div>
+            <div class="modal-header">
+                <h3>Hesap Ekle: <span id="accountGameName"></span></h3>
+            </div>
+            <form id="addAccountForm" onsubmit="addAccount(event)">
+                <input type="hidden" id="accountGameId" name="gameId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="accountUsername">Kullanıcı Adı *</label>
+                        <input type="text" id="accountUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountPassword">Şifre *</label>
+                        <input type="password" id="accountPassword" name="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="accountEmail">E-mail</label>
+                    <input type="email" id="accountEmail" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="accountGuard">Guard Kodu</label>
+                    <input type="text" id="accountGuard" name="guardCode">
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Hesap Ekle
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Key Modal -->
+    <div id="addKeyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal('addKeyModal')">&times;</div>
+            <div class="modal-header">
+                <h3>Yeni Key Ekle</h3>
+            </div>
+            <form id="addKeyForm" onsubmit="addKey(event)">
+                <div class="form-group">
+                    <label for="keyValue">Key *</label>
+                    <input type="text" id="keyValue" name="keyValue" placeholder="XXXXX-XXXXX-XXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="keyGameId">Oyun *</label>
+                    <select id="keyGameId" name="gameId" required>
+                        <option value="">Oyun Seçin</option>
+                        <!-- Oyunlar buraya yüklenecek -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="keyType">Key Tipi</label>
+                    <select id="keyType" name="keyType">
+                        <option value="steam">Steam Key</option>
+                        <option value="epic">Epic Games Key</option>
+                        <option value="origin">Origin Key</option>
+                        <option value="uplay">Uplay Key</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Key Ekle
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="static/auth.js"></script>
+    <script>
+        let currentGameId = null;
+
+        // Admin kontrolü
+        window.onload = function() {
+            const currentUser = db.getCurrentUser();
+            if (!currentUser || currentUser.role !== 'admin') {
+                Swal.fire({
+                    title: 'Erişim Reddedildi!',
+                    text: 'Bu sayfaya erişim yetkiniz yok!',
+                    icon: 'error',
+                    confirmButtonText: 'Ana Sayfaya Dön',
+                    confirmButtonColor: '#06BFFF'
+                }).then(() => {
+                    window.location.href = 'index.html';
+                });
+                return;
+            }
+            loadAllData();
+        };
+
+        function switchTab(tabName) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.admin-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            
+            // Load data for specific tab
+            if (tabName === 'games') {
+                loadGamesList();
+            } else if (tabName === 'users') {
+                loadUsersList();
+            } else if (tabName === 'keys') {
+                loadKeysList();
+                loadGamesForKeySelect();
+            } else if (tabName === 'suggestions') {
+                loadSuggestionsList();
+            }
+        }
+
+        async function loadAllData() {
+            await loadStats();
+            await loadGamesList();
+            await loadUsersList();
+            await loadKeysList();
+            await loadSuggestionsList();
+        }
+
+        async function loadKeysList() {
+            const keys = await db.getAllKeys();
+            const games = await db.getAllGames();
+            const tbody = document.getElementById('keysTableBody');
+            tbody.innerHTML = '';
+
+            const keyList = Object.values(keys);
+            
+            if (keyList.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px; color: #a0aec0;">
+                            <i class="fas fa-key" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                            <h3>Henüz key eklenmemiş</h3>
+                            <p>İlk key'i eklemek için "Yeni Key Ekle" butonuna tıklayın.</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            keyList.forEach(key => {
+                const game = games[key.gameId];
+                const gameName = game ? game.name : 'Bilinmeyen Oyun';
+                const statusClass = key.status === 'available' ? 'success' : 'danger';
+                const statusText = key.status === 'available' ? 'Müsait' : 'Kullanılmış';
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <code style="background: rgba(102, 192, 244, 0.1); padding: 4px 8px; border-radius: 4px;">
+                            ${key.keyValue}
+                        </code>
+                    </td>
+                    <td><strong>${gameName}</strong></td>
+                    <td>
+                        <span style="background: ${key.status === 'available' ? 'linear-gradient(90deg, #51cf66, #40c057)' : 'linear-gradient(90deg, #ff6b6b, #ee5a5a)'}; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem;">
+                            ${statusText}
+                        </span>
+                    </td>
+                    <td>${new Date(key.created).toLocaleDateString('tr-TR')}</td>
+                    <td>${key.usedBy ? `${key.usedBy} - ${new Date(key.usedDate).toLocaleDateString('tr-TR')}` : '-'}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteKey('${key.id}')">
+                            <i class="fas fa-trash"></i> Sil
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function loadGamesForKeySelect() {
+            const games = db.getAllGames();
+            const select = document.getElementById('keyGameId');
+            const gameArray = Object.values(games);
+            
+            // Clear existing options except first one
+            select.innerHTML = '<option value="">Oyun Seçin</option>';
+            
+            gameArray.forEach(game => {
+                const option = document.createElement('option');
+                option.value = game.id;
+                option.textContent = game.name;
+                select.appendChild(option);
+            });
+        }
+
+        function openAddKeyModal() {
+            loadGamesForKeySelect();
+            document.getElementById('addKeyModal').style.display = 'flex';
+        }
+
+        function addKey(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const keyData = {
+                keyValue: formData.get('keyValue'),
+                gameId: formData.get('gameId'),
+                keyType: formData.get('keyType')
+            };
+            
+            const result = db.addKey(keyData);
+            
+            if (result.success) {
+                Swal.fire({
+                    title: 'Başarılı!',
+                    text: result.message,
+                    icon: 'success',
+                    confirmButtonColor: '#06BFFF'
+                });
+                closeModal('addKeyModal');
+                loadAllData();
+            } else {
+                Swal.fire({
+                    title: 'Hata!',
+                    text: result.message,
+                    icon: 'error',
+                    confirmButtonColor: '#06BFFF'
+                });
+            }
+        }
+
+        function deleteKey(keyId) {
+            Swal.fire({
+                title: 'Key\'i Sil?',
+                text: 'Bu key\'i kalıcı olarak silmek istediğinizden emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#ff6b6b',
+                cancelButtonColor: '#06BFFF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteResult = db.deleteKey(keyId);
+                    if (deleteResult.success) {
+                        Swal.fire({
+                            title: 'Silindi!',
+                            text: deleteResult.message,
+                            icon: 'success',
+                            confirmButtonColor: '#06BFFF'
+                        });
+                        loadAllData();
+                    }
+                }
+            });
+        }
+
+        async function loadStats() {
+            const stats = await db.getStats();
+            
+            document.getElementById('totalUsers').textContent = stats.totalUsers || 0;
+            document.getElementById('totalGames').textContent = stats.totalGames || 0;
+            document.getElementById('totalAccounts').textContent = stats.totalAccounts || 0;
+            document.getElementById('totalKeys').textContent = stats.totalKeys || 0;
+            document.getElementById('specialGames').textContent = stats.specialGames || 0;
+            document.getElementById('totalSuggestions').textContent = stats.totalSuggestions || 0;
+            document.getElementById('totalAdmins').textContent = stats.totalAdmins || 0;
+        }
+
+        async function loadGamesList() {
+            const games = await db.getAllGames();
+            const gamesList = document.getElementById('gamesList');
+            gamesList.innerHTML = '';
+
+            const gameArray = Object.values(games);
+            
+            if (gameArray.length === 0) {
+                gamesList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #a0aec0;">
+                        <i class="fas fa-gamepad" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                        <h3>Henüz oyun eklenmemiş</h3>
+                        <p>İlk oyunu eklemek için "Yeni Oyun Ekle" butonuna tıklayın.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            gameArray.forEach(game => {
+                const accountCount = game.accounts ? game.accounts.length : 0;
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <h4>${game.name} ${game.isSpecial ? '<span style="color: #FFD700;"><i class="fas fa-star"></i> Özel</span>' : ''}</h4>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-primary" onclick="openAddAccountModal('${game.id}', '${game.name}')">
+                                <i class="fas fa-key"></i> Hesap Ekle
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteGame('${game.id}')">
+                                <i class="fas fa-trash"></i> Sil
+                            </button>
+                        </div>
+                    </div>
+                    <div class="game-details">
+                        <div class="game-detail">
+                            <strong>Platform:</strong> ${game.platform || 'Belirtilmemiş'}
+                        </div>
+                        <div class="game-detail">
+                            <strong>App ID:</strong> ${game.appID}
+                        </div>
+                        <div class="game-detail">
+                            <strong>Kategori:</strong> ${game.category || 'Belirtilmemiş'}
+                        </div>
+                        <div class="game-detail">
+                            <strong>Hesap Sayısı:</strong> ${accountCount}
+                        </div>
+                        ${game.price ? `<div class="game-detail"><strong>Fiyat:</strong> ${game.price} ₺</div>` : ''}
+                        ${game.isSpecial && game.specialPrice ? `<div class="game-detail"><strong>Özel Fiyat:</strong> ${game.specialPrice} ₺</div>` : ''}
+                    </div>
+                    ${game.description ? `<div style="color: #a0aec0; margin-top: 10px;">${game.description}</div>` : ''}
+                    ${accountCount > 0 ? `
+                        <div class="accounts-list">
+                            <h5 style="color: #06BFFF; margin-bottom: 10px;">Hesaplar (${accountCount})</h5>
+                            ${game.accounts.map(account => `
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <strong>${account.username}</strong> | ${account.email || 'E-mail yok'} 
+                                        | Durum: <span style="color: ${account.status === 'available' ? '#51cf66' : '#ff9800'}">${account.status === 'available' ? 'Müsait' : 'Kullanımda'}</span>
+                                    </div>
+                                    <button class="btn btn-danger" onclick="deleteAccount('${game.id}', '${account.id}')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                `;
+                gamesList.appendChild(gameCard);
+            });
+        }
+
+        async function loadUsersList() {
+            const users = await db.getAllUsers();
+            const tbody = document.getElementById('usersTableBody');
+            tbody.innerHTML = '';
+
+            const userList = Object.values(users);
+            
+            if (userList.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px; color: #a0aec0;">
+                            Henüz kullanıcı yok
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            userList.forEach(user => {
+                const roleClass = user.role === 'admin' ? 'role-admin' : 'role-user';
+                const roleIcon = user.role === 'admin' ? 'fas fa-shield-alt' : 'fas fa-user';
+                const roleText = user.role === 'admin' ? 'Admin' : 'Kullanıcı';
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-user-circle" style="color: #06BFFF;"></i>
+                            <strong>${user.username}</strong>
+                        </div>
+                    </td>
+                    <td>${user.email}</td>
+                    <td>
+                        <span style="background: ${user.role === 'admin' ? 'linear-gradient(90deg, #ff6b6b, #ee5a5a)' : 'linear-gradient(90deg, #51cf66, #40c057)'}; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem;">
+                            <i class="${roleIcon}"></i> ${roleText}
+                        </span>
+                    </td>
+                    <td>${new Date(user.created).toLocaleDateString('tr-TR')}</td>
+                    <td>
+                        ${user.role !== 'admin' ? 
+                            `<button class="btn btn-danger" onclick="deleteUser('${user.username}')">
+                                <i class="fas fa-trash"></i> Sil
+                            </button>` : 
+                            '<span style="color: #a0aec0; font-style: italic;">Korumalı</span>'
+                        }
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        async function loadSuggestionsList() {
+            const suggestions = await db.getAllSuggestions();
+            const tbody = document.getElementById('suggestionsTableBody');
+            tbody.innerHTML = '';
+
+            const suggestionList = Object.values(suggestions);
+            
+            if (suggestionList.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px; color: #a0aec0;">
+                            Henüz öneri yok
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            suggestionList.forEach(suggestion => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${suggestion.gameName}</strong></td>
+                    <td>${suggestion.username}</td>
+                    <td>${suggestion.description || 'Açıklama yok'}</td>
+                    <td>${new Date(suggestion.created).toLocaleDateString('tr-TR')}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteSuggestion('${suggestion.id}')">
+                            <i class="fas fa-trash"></i> Sil
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function openAddGameModal() {
+            document.getElementById('addGameModal').style.display = 'flex';
+        }
+
+        function openAddAccountModal(gameId, gameName) {
+            currentGameId = gameId;
+            document.getElementById('accountGameId').value = gameId;
+            document.getElementById('accountGameName').textContent = gameName;
+            document.getElementById('addAccountModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            if (modalId === 'addGameModal') {
+                document.getElementById('addGameForm').reset();
+            } else if (modalId === 'addAccountModal') {
+                document.getElementById('addAccountForm').reset();
+                currentGameId = null;
+            }
+        }
+
+        async function addGame(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const gameData = {
+                name: formData.get('name'),
+                appID: formData.get('appID'),
+                platform: formData.get('platform'),
+                price: formData.get('price'),
+                category: formData.get('category'),
+                description: formData.get('description'),
+                libraryImage: formData.get('libraryImage'),
+                isSpecial: formData.get('isSpecial') === 'on',
+                specialPrice: formData.get('specialPrice')
+            };
+            
+            const result = await db.addGame(gameData);
+            
+            if (result.success) {
+                Swal.fire({
+                    title: 'Başarılı!',
+                    text: result.message,
+                    icon: 'success',
+                    confirmButtonColor: '#06BFFF'
+                });
+                closeModal('addGameModal');
+                loadAllData();
+            } else {
+                Swal.fire({
+                    title: 'Hata!',
+                    text: result.message,
+                    icon: 'error',
+                    confirmButtonColor: '#06BFFF'
+                });
+            }
+        }
+
+        function addAccount(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const accountData = {
+                username: formData.get('username'),
+                password: formData.get('password'),
+                email: formData.get('email'),
+                guardCode: formData.get('guardCode')
+            };
+            
+            const result = db.addGameAccount(currentGameId, accountData);
+            
+            if (result.success) {
+                Swal.fire({
+                    title: 'Başarılı!',
+                    text: result.message,
+                    icon: 'success',
+                    confirmButtonColor: '#06BFFF'
+                });
+                closeModal('addAccountModal');
+                loadAllData();
+            } else {
+                Swal.fire({
+                    title: 'Hata!',
+                    text: result.message,
+                    icon: 'error',
+                    confirmButtonColor: '#06BFFF'
+                });
+            }
+        }
+
+        function deleteGame(gameId) {
+            Swal.fire({
+                title: 'Oyunu Sil?',
+                text: 'Bu oyunu ve tüm hesaplarını kalıcı olarak silmek istediğinizden emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#ff6b6b',
+                cancelButtonColor: '#06BFFF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteResult = db.deleteGame(gameId);
+                    if (deleteResult.success) {
+                        Swal.fire({
+                            title: 'Silindi!',
+                            text: deleteResult.message,
+                            icon: 'success',
+                            confirmButtonColor: '#06BFFF'
+                        });
+                        loadAllData();
+                    }
+                }
+            });
+        }
+
+        function deleteAccount(gameId, accountId) {
+            Swal.fire({
+                title: 'Hesabı Sil?',
+                text: 'Bu hesabı kalıcı olarak silmek istediğinizden emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#ff6b6b',
+                cancelButtonColor: '#06BFFF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteResult = db.deleteGameAccount(gameId, accountId);
+                    if (deleteResult.success) {
+                        Swal.fire({
+                            title: 'Silindi!',
+                            text: deleteResult.message,
+                            icon: 'success',
+                            confirmButtonColor: '#06BFFF'
+                        });
+                        loadAllData();
+                    }
+                }
+            });
+        }
+
+        function deleteUser(username) {
+            Swal.fire({
+                title: 'Kullanıcıyı Sil?',
+                text: `${username} kullanıcısını kalıcı olarak silmek istediğinizden emin misiniz?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#ff6b6b',
+                cancelButtonColor: '#06BFFF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteResult = db.deleteUser(username);
+                    if (deleteResult.success) {
+                        Swal.fire({
+                            title: 'Silindi!',
+                            text: deleteResult.message,
+                            icon: 'success',
+                            confirmButtonColor: '#06BFFF'
+                        });
+                        loadAllData();
+                    }
+                }
+            });
+        }
+
+        function deleteSuggestion(suggestionId) {
+            Swal.fire({
+                title: 'Öneriyi Sil?',
+                text: 'Bu öneriyi kalıcı olarak silmek istediğinizden emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#ff6b6b',
+                cancelButtonColor: '#06BFFF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteResult = db.deleteSuggestion(suggestionId);
+                    if (deleteResult.success) {
+                        Swal.fire({
+                            title: 'Silindi!',
+                            text: deleteResult.message,
+                            icon: 'success',
+                            confirmButtonColor: '#06BFFF'
+                        });
+                        loadAllData();
+                    }
+                }
+            });
+        }
+
+        function logout() {
+            Swal.fire({
+                title: 'Çıkış Yap?',
+                text: 'Admin panelden çıkış yapmak istediğinize emin misiniz?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Çıkış Yap',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#ff6b6b',
+                cancelButtonColor: '#06BFFF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    db.logoutUser();
+                    window.location.href = 'index.html';
+                }
+            });
+        }
+
+        // Special game checkbox handler
+        document.getElementById('isSpecial').addEventListener('change', function() {
+            const specialPriceGroup = document.getElementById('specialPriceGroup');
+            if (this.checked) {
+                specialPriceGroup.style.display = 'block';
+            } else {
+                specialPriceGroup.style.display = 'none';
+                document.getElementById('specialPrice').value = '';
+            }
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+

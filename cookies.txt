@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+paylasimlihesap.com	TRUE	/	FALSE	1999999999	session	q1wksBYMJ6oBWpWL_ize4ve34j0xRECjs3DbCIwMUEM.LWd8x83nAZWK2B-caH_Uv9bM_B4
+paylasimlihesap.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+

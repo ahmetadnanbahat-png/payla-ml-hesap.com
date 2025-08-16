@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hata - PaylasimliHesap.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <style>
+        /* Base CSS stilleri */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1b2838;
+            color: #c7d5e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .error-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 40px 20px;
+            background: rgba(42, 45, 62, 0.6);
+            border-radius: 15px;
+            border: 1px solid rgba(102, 192, 244, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #06BFFF, #2D73FF);
+        }
+        
+        .error-icon {
+            font-size: 5rem;
+            margin: 0 auto 30px;
+            background: linear-gradient(90deg, #06BFFF, #2D73FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            display: block;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(6, 191, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(6, 191, 255, 0.6);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .error-title {
+                font-size: 2.2rem;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                margin: 80px auto 40px;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1rem;
+            }
+            
+            .back-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .error-container {
+                margin: 60px auto 30px;
+                padding: 30px 15px;
+            }
+            
+            .error-title {
+                font-size: 1.8rem;
+            }
+            
+            .error-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <i class="fas fa-exclamation-circle error-icon"></i>
+        <h1 class="error-title">Sayfa bulunamadı</h1>
+        <p class="error-message">Aradığınız sayfayı bulamadık. Lütfen URL&#39;i kontrol edin.</p>
+        <a href="/" class="back-btn">Ana Sayfaya Dön</a>
+    </div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"0bb01b51692a4580bead07924ea1a1fd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
